@@ -108,7 +108,7 @@ public class HealthAssistantHttpServer extends AllDirectives {
         CompletionStage<QueryResponse> responseFuture = AskPattern.ask(
                 routerActor,
                 replyTo -> new UserQuery(request.query, request.userId, replyTo),
-                Duration.ofSeconds(30),
+                Duration.ofSeconds(180),
                 system.scheduler()
         );
 
