@@ -1,0 +1,335 @@
+2025-08-13 14:34:50.002 [com.healthassistant.HealthAssistantApp.main()] INFO  c.healthassistant.HealthAssistantApp - Starting Health Assistant System with config: general-medicine
+2025-08-13 14:34:50.372 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-13 14:34:50.596 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Starting up, Akka version [2.8.5] ...
+2025-08-13 14:34:50.696 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Registered cluster JMX MBean [akka:type=Cluster]
+2025-08-13 14:34:50.696 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Started up successfully
+2025-08-13 14:34:50.717 [HealthAssistantSystem-akka.actor.default-dispatcher-6] INFO  akka.cluster.sbr.SplitBrainResolver - SBR started. Config: strategy [KeepMajority], stable-after [20 seconds], down-all-when-unstable [15 seconds], selfUniqueAddress [akka://HealthAssistantSystem@127.0.0.1:2551#-6281790699017108150], selfDc [default].
+2025-08-13 14:34:50.791 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2025-08-13 14:34:50.793 [HealthAssistantSystem-akka.actor.default-dispatcher-3] ERROR akka.remote.artery.Encoder - Failed to serialize message [akka.remote.artery.OutboundHandshake$HandshakeReq].
+java.util.NoSuchElementException: key not found: jackson-cbor
+	at scala.collection.immutable.BitmapIndexedMapNode.apply(HashMap.scala:674)
+	at scala.collection.immutable.BitmapIndexedMapNode.apply(HashMap.scala:672)
+	at scala.collection.immutable.HashMap.apply(HashMap.scala:132)
+	at akka.serialization.Serialization.$anonfun$bindings$3(Serialization.scala:472)
+	at scala.collection.Iterator$$anon$9.next(Iterator.scala:584)
+	at scala.collection.immutable.HashMapBuilder.addAll(HashMap.scala:2407)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2221)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2197)
+	at scala.collection.MapOps$WithFilter.map(Map.scala:381)
+	at akka.serialization.Serialization.<init>(Serialization.scala:470)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:18)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:14)
+	at akka.actor.ActorSystemImpl.registerExtension(ActorSystem.scala:1187)
+	at akka.actor.ActorSystemImpl.$anonfun$loadExtensions$1(ActorSystem.scala:1230)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:2122)
+	at akka.actor.ActorSystemImpl.loadExtensions$1(ActorSystem.scala:1224)
+	at akka.actor.ActorSystemImpl.loadExtensions(ActorSystem.scala:1243)
+	at akka.actor.ActorSystemImpl.liftedTree2$1(ActorSystem.scala:1064)
+	at akka.actor.ActorSystemImpl._start$lzycompute(ActorSystem.scala:1051)
+	at akka.actor.ActorSystemImpl._start(ActorSystem.scala:1051)
+	at akka.actor.ActorSystemImpl.start(ActorSystem.scala:1074)
+	at akka.actor.typed.ActorSystem$.createInternal(ActorSystem.scala:290)
+	at akka.actor.typed.ActorSystem$.apply(ActorSystem.scala:204)
+	at akka.actor.typed.ActorSystem$.create(ActorSystem.scala:241)
+	at akka.actor.typed.ActorSystem.create(ActorSystem.scala)
+	at com.healthassistant.HealthAssistantApp.main(HealthAssistantApp.java:37)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+2025-08-13 14:34:50.793 [HealthAssistantSystem-akka.actor.default-dispatcher-3] ERROR akka.remote.artery.Encoder - Failed to serialize message [akka.remote.artery.OutboundHandshake$HandshakeReq].
+java.util.NoSuchElementException: key not found: jackson-cbor
+	at scala.collection.immutable.BitmapIndexedMapNode.apply(HashMap.scala:674)
+	at scala.collection.immutable.BitmapIndexedMapNode.apply(HashMap.scala:672)
+	at scala.collection.immutable.HashMap.apply(HashMap.scala:132)
+	at akka.serialization.Serialization.$anonfun$bindings$3(Serialization.scala:472)
+	at scala.collection.Iterator$$anon$9.next(Iterator.scala:584)
+	at scala.collection.immutable.HashMapBuilder.addAll(HashMap.scala:2407)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2221)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2197)
+	at scala.collection.MapOps$WithFilter.map(Map.scala:381)
+	at akka.serialization.Serialization.<init>(Serialization.scala:470)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:18)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:14)
+	at akka.actor.ActorSystemImpl.registerExtension(ActorSystem.scala:1187)
+	at akka.actor.ActorSystemImpl.$anonfun$loadExtensions$1(ActorSystem.scala:1230)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:2122)
+	at akka.actor.ActorSystemImpl.loadExtensions$1(ActorSystem.scala:1224)
+	at akka.actor.ActorSystemImpl.loadExtensions(ActorSystem.scala:1243)
+	at akka.actor.ActorSystemImpl.liftedTree2$1(ActorSystem.scala:1064)
+	at akka.actor.ActorSystemImpl._start$lzycompute(ActorSystem.scala:1051)
+	at akka.actor.ActorSystemImpl._start(ActorSystem.scala:1051)
+	at akka.actor.ActorSystemImpl.start(ActorSystem.scala:1074)
+	at akka.actor.typed.ActorSystem$.createInternal(ActorSystem.scala:290)
+	at akka.actor.typed.ActorSystem$.apply(ActorSystem.scala:204)
+	at akka.actor.typed.ActorSystem$.create(ActorSystem.scala:241)
+	at akka.actor.typed.ActorSystem.create(ActorSystem.scala)
+	at com.healthassistant.HealthAssistantApp.main(HealthAssistantApp.java:37)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+2025-08-13 14:34:50.796 [HealthAssistantSystem-akka.actor.default-dispatcher-6] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Exiting completed
+2025-08-13 14:34:50.799 [HealthAssistantSystem-akka.actor.default-dispatcher-6] INFO  akka.actor.LocalActorRef - Message [akka.cluster.ClusterUserAction$Leave] to Actor[akka://HealthAssistantSystem/system/cluster/core/daemon#981182924] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-13 14:34:50.799 [HealthAssistantSystem-akka.actor.default-dispatcher-6] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Shutting down...
+2025-08-13 14:34:50.799 [HealthAssistantSystem-akka.actor.default-dispatcher-6] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Successfully shut down
+2025-08-13 14:36:26.393 [com.healthassistant.HealthAssistantApp.main()] INFO  c.healthassistant.HealthAssistantApp - Starting Health Assistant System with config: general-medicine
+2025-08-13 14:36:26.781 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-13 14:36:27.028 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Starting up, Akka version [2.8.5] ...
+2025-08-13 14:36:27.121 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Registered cluster JMX MBean [akka:type=Cluster]
+2025-08-13 14:36:27.121 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Started up successfully
+2025-08-13 14:36:27.145 [HealthAssistantSystem-akka.actor.default-dispatcher-5] INFO  akka.cluster.sbr.SplitBrainResolver - SBR started. Config: strategy [KeepMajority], stable-after [20 seconds], down-all-when-unstable [15 seconds], selfUniqueAddress [akka://HealthAssistantSystem@127.0.0.1:2551#-6202341256167549417], selfDc [default].
+2025-08-13 14:36:27.282 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2025-08-13 14:36:27.284 [HealthAssistantSystem-akka.actor.default-dispatcher-3] ERROR akka.remote.artery.Encoder - Failed to serialize message [akka.remote.artery.OutboundHandshake$HandshakeReq].
+com.fasterxml.jackson.databind.JsonMappingException: Scala module 2.13.5 requires Jackson Databind version >= 2.13.0 and < 2.14.0 - Found jackson-databind version 2.15.2
+	at com.fasterxml.jackson.module.scala.JacksonModule.setupModule(JacksonModule.scala:61)
+	at com.fasterxml.jackson.module.scala.JacksonModule.setupModule$(JacksonModule.scala:46)
+	at com.fasterxml.jackson.module.scala.DefaultScalaModule.setupModule(DefaultScalaModule.scala:17)
+	at com.fasterxml.jackson.databind.ObjectMapper.registerModule(ObjectMapper.java:879)
+	at akka.serialization.jackson.JacksonObjectMapperProvider$.$anonfun$configureObjectMapperModules$4(JacksonObjectMapperProvider.scala:249)
+	at akka.serialization.jackson.JacksonObjectMapperProvider$.$anonfun$configureObjectMapperModules$4$adapted(JacksonObjectMapperProvider.scala:248)
+	at scala.collection.immutable.List.foreach(List.scala:333)
+	at akka.serialization.jackson.JacksonObjectMapperProvider$.configureObjectMapperModules(JacksonObjectMapperProvider.scala:248)
+	at akka.serialization.jackson.JacksonObjectMapperProvider$.createObjectMapper(JacksonObjectMapperProvider.scala:272)
+	at akka.serialization.jackson.JacksonObjectMapperProvider.create(JacksonObjectMapperProvider.scala:366)
+	at akka.serialization.jackson.JacksonObjectMapperProvider.$anonfun$getOrCreate$1(JacksonObjectMapperProvider.scala:324)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1724)
+	at akka.serialization.jackson.JacksonObjectMapperProvider.getOrCreate(JacksonObjectMapperProvider.scala:324)
+	at akka.serialization.jackson.JacksonJsonSerializer.<init>(JacksonSerializer.scala:141)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at akka.actor.ReflectiveDynamicAccess.$anonfun$createInstanceFor$1(ReflectiveDynamicAccess.scala:40)
+	at scala.util.Try$.apply(Try.scala:210)
+	at akka.actor.ReflectiveDynamicAccess.createInstanceFor(ReflectiveDynamicAccess.scala:35)
+	at akka.actor.ReflectiveDynamicAccess.$anonfun$createInstanceFor$5(ReflectiveDynamicAccess.scala:48)
+	at scala.util.Success.flatMap(Try.scala:258)
+	at akka.actor.ReflectiveDynamicAccess.createInstanceFor(ReflectiveDynamicAccess.scala:47)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1$$anonfun$applyOrElse$1$$anonfun$applyOrElse$2$$anonfun$applyOrElse$3.applyOrElse(Serialization.scala:406)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1$$anonfun$applyOrElse$1$$anonfun$applyOrElse$2$$anonfun$applyOrElse$3.applyOrElse(Serialization.scala:398)
+	at scala.util.Failure.recoverWith(Try.scala:240)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1$$anonfun$applyOrElse$1$$anonfun$applyOrElse$2.applyOrElse(Serialization.scala:398)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1$$anonfun$applyOrElse$1$$anonfun$applyOrElse$2.applyOrElse(Serialization.scala:396)
+	at scala.util.Failure.recoverWith(Try.scala:240)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1$$anonfun$applyOrElse$1.applyOrElse(Serialization.scala:396)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1$$anonfun$applyOrElse$1.applyOrElse(Serialization.scala:392)
+	at scala.util.Failure.recoverWith(Try.scala:240)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1.applyOrElse(Serialization.scala:392)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1.applyOrElse(Serialization.scala:390)
+	at scala.util.Failure.recoverWith(Try.scala:240)
+	at akka.serialization.Serialization.serializerOf(Serialization.scala:390)
+	at akka.serialization.Serialization.$anonfun$serializers$2(Serialization.scala:458)
+	at scala.collection.Iterator$$anon$9.next(Iterator.scala:584)
+	at scala.collection.immutable.HashMapBuilder.addAll(HashMap.scala:2407)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2221)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2197)
+	at scala.collection.MapOps$WithFilter.map(Map.scala:381)
+	at akka.serialization.Serialization.<init>(Serialization.scala:458)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:18)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:14)
+	at akka.actor.ActorSystemImpl.registerExtension(ActorSystem.scala:1187)
+	at akka.actor.ActorSystemImpl.$anonfun$loadExtensions$1(ActorSystem.scala:1230)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:2122)
+	at akka.actor.ActorSystemImpl.loadExtensions$1(ActorSystem.scala:1224)
+	at akka.actor.ActorSystemImpl.loadExtensions(ActorSystem.scala:1243)
+	at akka.actor.ActorSystemImpl.liftedTree2$1(ActorSystem.scala:1064)
+	at akka.actor.ActorSystemImpl._start$lzycompute(ActorSystem.scala:1051)
+	at akka.actor.ActorSystemImpl._start(ActorSystem.scala:1051)
+	at akka.actor.ActorSystemImpl.start(ActorSystem.scala:1074)
+	at akka.actor.typed.ActorSystem$.createInternal(ActorSystem.scala:290)
+	at akka.actor.typed.ActorSystem$.apply(ActorSystem.scala:204)
+	at akka.actor.typed.ActorSystem$.create(ActorSystem.scala:241)
+	at akka.actor.typed.ActorSystem.create(ActorSystem.scala)
+	at com.healthassistant.HealthAssistantApp.main(HealthAssistantApp.java:37)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+2025-08-13 14:36:27.285 [HealthAssistantSystem-akka.actor.default-dispatcher-3] ERROR akka.remote.artery.Encoder - Failed to serialize message [akka.remote.artery.OutboundHandshake$HandshakeReq].
+com.fasterxml.jackson.databind.JsonMappingException: Scala module 2.13.5 requires Jackson Databind version >= 2.13.0 and < 2.14.0 - Found jackson-databind version 2.15.2
+	at com.fasterxml.jackson.module.scala.JacksonModule.setupModule(JacksonModule.scala:61)
+	at com.fasterxml.jackson.module.scala.JacksonModule.setupModule$(JacksonModule.scala:46)
+	at com.fasterxml.jackson.module.scala.DefaultScalaModule.setupModule(DefaultScalaModule.scala:17)
+	at com.fasterxml.jackson.databind.ObjectMapper.registerModule(ObjectMapper.java:879)
+	at akka.serialization.jackson.JacksonObjectMapperProvider$.$anonfun$configureObjectMapperModules$4(JacksonObjectMapperProvider.scala:249)
+	at akka.serialization.jackson.JacksonObjectMapperProvider$.$anonfun$configureObjectMapperModules$4$adapted(JacksonObjectMapperProvider.scala:248)
+	at scala.collection.immutable.List.foreach(List.scala:333)
+	at akka.serialization.jackson.JacksonObjectMapperProvider$.configureObjectMapperModules(JacksonObjectMapperProvider.scala:248)
+	at akka.serialization.jackson.JacksonObjectMapperProvider$.createObjectMapper(JacksonObjectMapperProvider.scala:272)
+	at akka.serialization.jackson.JacksonObjectMapperProvider.create(JacksonObjectMapperProvider.scala:366)
+	at akka.serialization.jackson.JacksonObjectMapperProvider.$anonfun$getOrCreate$1(JacksonObjectMapperProvider.scala:324)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1724)
+	at akka.serialization.jackson.JacksonObjectMapperProvider.getOrCreate(JacksonObjectMapperProvider.scala:324)
+	at akka.serialization.jackson.JacksonJsonSerializer.<init>(JacksonSerializer.scala:141)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at akka.actor.ReflectiveDynamicAccess.$anonfun$createInstanceFor$1(ReflectiveDynamicAccess.scala:40)
+	at scala.util.Try$.apply(Try.scala:210)
+	at akka.actor.ReflectiveDynamicAccess.createInstanceFor(ReflectiveDynamicAccess.scala:35)
+	at akka.actor.ReflectiveDynamicAccess.$anonfun$createInstanceFor$5(ReflectiveDynamicAccess.scala:48)
+	at scala.util.Success.flatMap(Try.scala:258)
+	at akka.actor.ReflectiveDynamicAccess.createInstanceFor(ReflectiveDynamicAccess.scala:47)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1$$anonfun$applyOrElse$1$$anonfun$applyOrElse$2$$anonfun$applyOrElse$3.applyOrElse(Serialization.scala:406)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1$$anonfun$applyOrElse$1$$anonfun$applyOrElse$2$$anonfun$applyOrElse$3.applyOrElse(Serialization.scala:398)
+	at scala.util.Failure.recoverWith(Try.scala:240)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1$$anonfun$applyOrElse$1$$anonfun$applyOrElse$2.applyOrElse(Serialization.scala:398)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1$$anonfun$applyOrElse$1$$anonfun$applyOrElse$2.applyOrElse(Serialization.scala:396)
+	at scala.util.Failure.recoverWith(Try.scala:240)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1$$anonfun$applyOrElse$1.applyOrElse(Serialization.scala:396)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1$$anonfun$applyOrElse$1.applyOrElse(Serialization.scala:392)
+	at scala.util.Failure.recoverWith(Try.scala:240)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1.applyOrElse(Serialization.scala:392)
+	at akka.serialization.Serialization$$anonfun$serializerOf$1.applyOrElse(Serialization.scala:390)
+	at scala.util.Failure.recoverWith(Try.scala:240)
+	at akka.serialization.Serialization.serializerOf(Serialization.scala:390)
+	at akka.serialization.Serialization.$anonfun$serializers$2(Serialization.scala:458)
+	at scala.collection.Iterator$$anon$9.next(Iterator.scala:584)
+	at scala.collection.immutable.HashMapBuilder.addAll(HashMap.scala:2407)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2221)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2197)
+	at scala.collection.MapOps$WithFilter.map(Map.scala:381)
+	at akka.serialization.Serialization.<init>(Serialization.scala:458)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:18)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:14)
+	at akka.actor.ActorSystemImpl.registerExtension(ActorSystem.scala:1187)
+	at akka.actor.ActorSystemImpl.$anonfun$loadExtensions$1(ActorSystem.scala:1230)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:2122)
+	at akka.actor.ActorSystemImpl.loadExtensions$1(ActorSystem.scala:1224)
+	at akka.actor.ActorSystemImpl.loadExtensions(ActorSystem.scala:1243)
+	at akka.actor.ActorSystemImpl.liftedTree2$1(ActorSystem.scala:1064)
+	at akka.actor.ActorSystemImpl._start$lzycompute(ActorSystem.scala:1051)
+	at akka.actor.ActorSystemImpl._start(ActorSystem.scala:1051)
+	at akka.actor.ActorSystemImpl.start(ActorSystem.scala:1074)
+	at akka.actor.typed.ActorSystem$.createInternal(ActorSystem.scala:290)
+	at akka.actor.typed.ActorSystem$.apply(ActorSystem.scala:204)
+	at akka.actor.typed.ActorSystem$.create(ActorSystem.scala:241)
+	at akka.actor.typed.ActorSystem.create(ActorSystem.scala)
+	at com.healthassistant.HealthAssistantApp.main(HealthAssistantApp.java:37)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+2025-08-13 14:36:27.288 [HealthAssistantSystem-akka.actor.default-dispatcher-5] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Exiting completed
+2025-08-13 14:36:27.290 [HealthAssistantSystem-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [akka.cluster.ClusterUserAction$Leave] to Actor[akka://HealthAssistantSystem/system/cluster/core/daemon#-295012643] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-13 14:36:27.290 [HealthAssistantSystem-akka.actor.default-dispatcher-5] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Shutting down...
+2025-08-13 14:36:27.290 [HealthAssistantSystem-akka.actor.default-dispatcher-5] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Successfully shut down
+2025-08-13 14:36:54.201 [com.healthassistant.HealthAssistantApp.main()] INFO  c.healthassistant.HealthAssistantApp - Starting Health Assistant System with config: general-medicine
+2025-08-13 14:36:54.576 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-13 14:36:54.818 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Starting up, Akka version [2.8.5] ...
+2025-08-13 14:36:54.911 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Registered cluster JMX MBean [akka:type=Cluster]
+2025-08-13 14:36:54.912 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Started up successfully
+2025-08-13 14:36:54.931 [HealthAssistantSystem-akka.actor.default-dispatcher-5] INFO  akka.cluster.sbr.SplitBrainResolver - SBR started. Config: strategy [KeepMajority], stable-after [20 seconds], down-all-when-unstable [15 seconds], selfUniqueAddress [akka://HealthAssistantSystem@127.0.0.1:2551#2938108835162254729], selfDc [default].
+2025-08-13 14:36:55.168 [com.healthassistant.HealthAssistantApp.main()] INFO  c.healthassistant.HealthAssistantApp - Health Assistant System started successfully
+2025-08-13 14:36:55.174 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.healthassistant.HealthAssistantApp - === CLUSTER NODE STARTING ===
+2025-08-13 14:36:55.174 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.healthassistant.HealthAssistantApp - Node address: akka://HealthAssistantSystem@127.0.0.1:2551
+2025-08-13 14:36:55.175 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.healthassistant.HealthAssistantApp - Node roles: [general-medicine, dc-default]
+2025-08-13 14:36:55.176 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.healthassistant.HealthAssistantApp - Cluster seed nodes: [akka://HealthAssistantSystem@127.0.0.1:2551, akka://HealthAssistantSystem@127.0.0.1:2552]
+2025-08-13 14:36:55.176 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.healthassistant.HealthAssistantApp - ============================
+2025-08-13 14:36:55.185 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.healthassistant.HealthAssistantApp - Health Assistant Router singleton created
+2025-08-13 14:36:55.222 [HealthAssistantSystem-akka.actor.default-dispatcher-5] WARN  akka.stream.Materializer - [outbound connection to [akka://HealthAssistantSystem@127.0.0.1:2552], control stream] Upstream failed, cause: StreamTcpException: Tcp command [Connect(127.0.0.1/<unresolved>:2552,None,List(),Some(5000 milliseconds),true)] failed because of java.net.ConnectException: Connection refused
+2025-08-13 14:36:55.222 [HealthAssistantSystem-akka.actor.default-dispatcher-5] WARN  akka.stream.Materializer - [outbound connection to [akka://HealthAssistantSystem@127.0.0.1:2552], message stream] Upstream failed, cause: StreamTcpException: Tcp command [Connect(127.0.0.1/<unresolved>:2552,None,List(),Some(5000 milliseconds),true)] failed because of java.net.ConnectException: Connection refused
+2025-08-13 14:36:55.530 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.healthassistant.HealthAssistantApp - HTTP server configuration - Interface: localhost, Port: 8080
+2025-08-13 14:36:55.531 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.healthassistant.HealthAssistantApp - Cluster event listeners would be registered here in a full implementation
+2025-08-13 14:36:55.531 [ForkJoinPool.commonPool-worker-7] INFO  c.h.http.HealthAssistantHttpServer - Health Assistant HTTP server started at http://localhost:8080
+2025-08-13 14:36:55.531 [ForkJoinPool.commonPool-worker-7] INFO  c.h.http.HealthAssistantHttpServer - Available endpoints:
+2025-08-13 14:36:55.531 [ForkJoinPool.commonPool-worker-7] INFO  c.h.http.HealthAssistantHttpServer -   GET  http://localhost:8080/health - Health check
+2025-08-13 14:36:55.531 [ForkJoinPool.commonPool-worker-7] INFO  c.h.http.HealthAssistantHttpServer -   POST http://localhost:8080/query - Submit medical query
+2025-08-13 14:36:55.531 [ForkJoinPool.commonPool-worker-7] INFO  c.h.http.HealthAssistantHttpServer -   GET  http://localhost:8080/info - System information
+2025-08-13 14:37:00.042 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Node [akka://HealthAssistantSystem@127.0.0.1:2551] is JOINING itself (with roles [general-medicine, dc-default], version [0.0.0]) and forming new cluster
+2025-08-13 14:37:00.043 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - is the new leader among reachable nodes (more leaders may exist)
+2025-08-13 14:37:00.047 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.cluster.Cluster - Cluster Node [akka://HealthAssistantSystem@127.0.0.1:2551] - Leader is moving node [akka://HealthAssistantSystem@127.0.0.1:2551] to [Up]
+2025-08-13 14:37:00.054 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  akka.cluster.sbr.SplitBrainResolver - This node is now the leader responsible for taking SBR decisions among the reachable nodes (more leaders may exist).
+2025-08-13 14:37:00.058 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  a.c.s.ClusterSingletonManager - Singleton manager starting singleton actor [akka://HealthAssistantSystem/system/singletonManagerhealth-assistant-router/health-assistant-router]
+2025-08-13 14:37:00.059 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.healthassistant.actors.RouterActor - RouterActor started on node: akka://HealthAssistantSystem@127.0.0.1:2551
+2025-08-13 14:37:00.059 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  a.c.s.ClusterSingletonManager - ClusterSingletonManager state change [Start -> Oldest]
+2025-08-13 14:37:00.062 [HealthAssistantSystem-akka.actor.default-dispatcher-5] INFO  com.healthassistant.actors.LLMActor - LLMActor started on node: akka://HealthAssistantSystem@127.0.0.1:2551 with Ollama URL: http://localhost:11434, model: llama3.2
+2025-08-13 14:37:00.062 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.healthassistant.actors.RouterActor - Initialized 3 department actors
+2025-08-13 14:37:00.062 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.h.actors.GeneralMedicineActor - GeneralMedicineActor started on node: akka://HealthAssistantSystem@127.0.0.1:2551
+2025-08-13 14:37:00.062 [HealthAssistantSystem-akka.actor.default-dispatcher-27] INFO  c.healthassistant.actors.LoggerActor - LoggerActor started on node: akka://HealthAssistantSystem@127.0.0.1:2551
+2025-08-13 14:37:00.062 [HealthAssistantSystem-akka.actor.default-dispatcher-24] INFO  c.h.actors.PharmacyActor - PharmacyActor started on node: akka://HealthAssistantSystem@127.0.0.1:2551
+2025-08-13 14:37:00.062 [HealthAssistantSystem-akka.actor.default-dispatcher-25] INFO  com.healthassistant.actors.LLMActor - LLMActor started on node: akka://HealthAssistantSystem@127.0.0.1:2551 with Ollama URL: http://localhost:11434, model: llama3.2
+2025-08-13 14:37:00.062 [HealthAssistantSystem-akka.actor.default-dispatcher-26] INFO  c.h.actors.RadiologyActor - RadiologyActor started on node: akka://HealthAssistantSystem@127.0.0.1:2551
+2025-08-13 14:37:00.063 [HealthAssistantSystem-akka.actor.default-dispatcher-27] INFO  c.healthassistant.actors.LoggerActor - LoggerActor started on node: akka://HealthAssistantSystem@127.0.0.1:2551
+2025-08-13 14:37:00.063 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - LoggerActor started on node: akka://HealthAssistantSystem@127.0.0.1:2551
+2025-08-13 14:37:00.063 [HealthAssistantSystem-akka.actor.default-dispatcher-28] INFO  com.healthassistant.actors.LLMActor - LLMActor started on node: akka://HealthAssistantSystem@127.0.0.1:2551 with Ollama URL: http://localhost:11434, model: llama3.2
+2025-08-13 14:37:00.131 [ForkJoinPool.commonPool-worker-7] INFO  c.h.services.OllamaService - Ollama availability check: Available
+2025-08-13 14:37:00.131 [HealthAssistantSystem-akka.actor.default-dispatcher-28] INFO  com.healthassistant.actors.LLMActor - Ollama service is available and ready
+2025-08-13 14:37:00.131 [ForkJoinPool.commonPool-worker-7] INFO  c.h.services.OllamaService - Ollama availability check: Available
+2025-08-13 14:37:00.131 [HealthAssistantSystem-akka.actor.default-dispatcher-25] INFO  com.healthassistant.actors.LLMActor - Ollama service is available and ready
+2025-08-13 14:37:00.132 [ForkJoinPool.commonPool-worker-7] INFO  c.h.services.OllamaService - Ollama availability check: Available
+2025-08-13 14:37:00.132 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  com.healthassistant.actors.LLMActor - Ollama service is available and ready
+2025-08-13 14:37:00.134 [HealthAssistantSystem-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [java.lang.Boolean] to Actor[akka://HealthAssistantSystem/system/singletonManagerhealth-assistant-router/health-assistant-router/general-medicine-actor/llm-actor#-6114885] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-13 14:37:00.134 [HealthAssistantSystem-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [java.lang.Boolean] to Actor[akka://HealthAssistantSystem/system/singletonManagerhealth-assistant-router/health-assistant-router/pharmacy-actor/pharmacy-llm-actor#-1641442575] was unhandled. [2] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-13 14:37:00.134 [HealthAssistantSystem-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [java.lang.Boolean] to Actor[akka://HealthAssistantSystem/system/singletonManagerhealth-assistant-router/health-assistant-router/radiology-actor/radiology-llm-actor#1349540616] was unhandled. [3] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-13 14:37:01.065 [HealthAssistantSystem-akka.actor.default-dispatcher-5] INFO  a.c.singleton.ClusterSingletonProxy - Singleton identified at [akka://HealthAssistantSystem/system/singletonManagerhealth-assistant-router/health-assistant-router]
+2025-08-13 14:37:14.987 [HealthAssistantSystem-akka.actor.default-dispatcher-23] WARN  akka.remote.artery.Association - Outbound control stream to [akka://HealthAssistantSystem@127.0.0.1:2552] failed. Restarting it. akka.remote.artery.OutboundHandshake$HandshakeTimeoutException: Handshake with [akka://HealthAssistantSystem@127.0.0.1:2552] did not complete within 20000 ms
+2025-08-13 15:05:25.282 [HealthAssistantSystem-akka.actor.default-dispatcher-27] INFO  c.h.http.HealthAssistantHttpServer - Received HTTP query from user test-user: I have a sore throat and fever
+2025-08-13 15:05:25.287 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.RouterActor - Routing query 7b1eb9a0-7692-4422-a950-d48f1ce9a159 from user test-user to department: general-medicine (Query: 'I have a sore throat and fever')
+2025-08-13 15:05:25.287 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.RouterActor - Successfully routed query 7b1eb9a0-7692-4422-a950-d48f1ce9a159 to general-medicine department using 'tell' pattern
+2025-08-13 15:05:25.288 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.h.actors.GeneralMedicineActor - GeneralMedicineActor processing query 7b1eb9a0-7692-4422-a950-d48f1ce9a159 from user test-user on node akka://HealthAssistantSystem@127.0.0.1:2551 (ask pattern)
+2025-08-13 15:05:25.288 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.h.actors.GeneralMedicineActor - Sent query 7b1eb9a0-7692-4422-a950-d48f1ce9a159 to LLMActor using 'ask' pattern
+2025-08-13 15:05:25.288 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  com.healthassistant.actors.LLMActor - Processing query 7b1eb9a0-7692-4422-a950-d48f1ce9a159 on node akka://HealthAssistantSystem@127.0.0.1:2551 using LLaMA model (ask pattern)
+2025-08-13 15:05:25.289 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.h.services.OllamaService - Sending request to Ollama: model=llama3.2, prompt length=602
+2025-08-13 15:05:25.302 [HealthAssistantSystem-akka.actor.default-dispatcher-3] ERROR c.h.services.OllamaService - Ollama request failed with status: 400 Bad Request
+2025-08-13 15:05:25.303 [HealthAssistantSystem-akka.actor.default-dispatcher-27] INFO  com.healthassistant.actors.LLMActor - LLM processing successful for query 7b1eb9a0-7692-4422-a950-d48f1ce9a159, response length: 87
+2025-08-13 15:05:25.303 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.h.actors.GeneralMedicineActor - Received LLM response for query 7b1eb9a0-7692-4422-a950-d48f1ce9a159 (success: true)
+2025-08-13 15:05:25.303 [ForkJoinPool.commonPool-worker-8] INFO  c.h.http.HealthAssistantHttpServer - Returning HTTP response for query 7b1eb9a0-7692-4422-a950-d48f1ce9a159: success=true
+2025-08-13 15:05:25.305 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.h.actors.GeneralMedicineActor - Sent log entry for query 7b1eb9a0-7692-4422-a950-d48f1ce9a159 to LoggerActor using 'tell' pattern
+2025-08-13 15:05:25.305 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.h.actors.GeneralMedicineActor - Completed processing query 7b1eb9a0-7692-4422-a950-d48f1ce9a159 - responded to user
+2025-08-13 15:05:25.306 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Logging entry for query 7b1eb9a0-7692-4422-a950-d48f1ce9a159 from user test-user to general-medicine department (tell pattern)
+2025-08-13 15:05:25.306 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - === QUERY LOG ===
+2025-08-13 15:05:25.306 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Query ID: 7b1eb9a0-7692-4422-a950-d48f1ce9a159
+2025-08-13 15:05:25.306 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - User ID: test-user
+2025-08-13 15:05:25.306 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Department: general-medicine
+2025-08-13 15:05:25.306 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Query: I have a sore throat and fever
+2025-08-13 15:05:25.306 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Response: I'm currently experiencing difficulties. Please ensure Ollama is running and try again.
+2025-08-13 15:05:25.306 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Success: true
+2025-08-13 15:05:25.306 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Timestamp: 2025-08-13T15:05:25.304507
+2025-08-13 15:05:25.307 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Node: akka://HealthAssistantSystem@127.0.0.1:2551
+2025-08-13 15:05:25.307 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - =================
+2025-08-13 15:49:05.924 [com.healthassistant.HealthAssistantApp.main()] INFO  c.healthassistant.HealthAssistantApp - Starting Health Assistant System with config: general-medicine
+2025-08-13 15:49:06.298 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-13 15:49:06.477 [HealthAssistantSystem-akka.actor.default-dispatcher-3] ERROR akka.io.TcpListener - Bind failed for TCP channel on endpoint [/127.0.0.1:2551]
+java.net.BindException: [/127.0.0.1:2551] Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:511)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:335)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:297)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:80)
+	at akka.io.TcpListener.liftedTree1$1(TcpListener.scala:60)
+	at akka.io.TcpListener.<init>(TcpListener.scala:57)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at akka.util.Reflect$.instantiate(Reflect.scala:73)
+	at akka.actor.ArgsReflectConstructor.produce(IndirectActorProducer.scala:100)
+	at akka.actor.Props.newActor(Props.scala:226)
+	at akka.actor.ActorCell.newActor(ActorCell.scala:615)
+	at akka.actor.ActorCell.create(ActorCell.scala:642)
+	at akka.actor.ActorCell.invokeAll$1(ActorCell.scala:513)
+	at akka.actor.ActorCell.systemInvoke(ActorCell.scala:535)
+	at akka.dispatch.Mailbox.processAllSystemMessages(Mailbox.scala:295)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:230)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1394)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1970)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+2025-08-13 15:49:06.486 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  akka.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2025-08-13 15:49:30.207 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.h.http.HealthAssistantHttpServer - Received HTTP query from user test-user: I have a sore throat and fever
+2025-08-13 15:49:30.221 [HealthAssistantSystem-akka.actor.default-dispatcher-27] INFO  c.healthassistant.actors.RouterActor - Routing query d0a35a49-852b-4373-a1dc-69648b733a70 from user test-user to department: general-medicine (Query: 'I have a sore throat and fever')
+2025-08-13 15:49:30.222 [HealthAssistantSystem-akka.actor.default-dispatcher-27] INFO  c.healthassistant.actors.RouterActor - Successfully routed query d0a35a49-852b-4373-a1dc-69648b733a70 to general-medicine department using 'tell' pattern
+2025-08-13 15:49:30.222 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.h.actors.GeneralMedicineActor - GeneralMedicineActor processing query d0a35a49-852b-4373-a1dc-69648b733a70 from user test-user on node akka://HealthAssistantSystem@127.0.0.1:2551 (ask pattern)
+2025-08-13 15:49:30.222 [HealthAssistantSystem-akka.actor.default-dispatcher-3] INFO  c.h.actors.GeneralMedicineActor - Sent query d0a35a49-852b-4373-a1dc-69648b733a70 to LLMActor using 'ask' pattern
+2025-08-13 15:49:30.222 [HealthAssistantSystem-akka.actor.default-dispatcher-27] INFO  com.healthassistant.actors.LLMActor - Processing query d0a35a49-852b-4373-a1dc-69648b733a70 on node akka://HealthAssistantSystem@127.0.0.1:2551 using LLaMA model (ask pattern)
+2025-08-13 15:49:30.222 [HealthAssistantSystem-akka.actor.default-dispatcher-27] INFO  c.h.services.OllamaService - Sending request to Ollama: model=llama3.2, prompt length=602
+2025-08-13 15:49:30.263 [HealthAssistantSystem-akka.actor.default-dispatcher-3] ERROR c.h.services.OllamaService - Ollama request failed with status: 400 Bad Request
+2025-08-13 15:49:30.263 [HealthAssistantSystem-akka.actor.default-dispatcher-27] INFO  com.healthassistant.actors.LLMActor - LLM processing successful for query d0a35a49-852b-4373-a1dc-69648b733a70, response length: 87
+2025-08-13 15:49:30.264 [HealthAssistantSystem-akka.actor.default-dispatcher-27] INFO  c.h.actors.GeneralMedicineActor - Received LLM response for query d0a35a49-852b-4373-a1dc-69648b733a70 (success: true)
+2025-08-13 15:49:30.264 [ForkJoinPool.commonPool-worker-9] INFO  c.h.http.HealthAssistantHttpServer - Returning HTTP response for query d0a35a49-852b-4373-a1dc-69648b733a70: success=true
+2025-08-13 15:49:30.265 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Logging entry for query d0a35a49-852b-4373-a1dc-69648b733a70 from user test-user to general-medicine department (tell pattern)
+2025-08-13 15:49:30.265 [HealthAssistantSystem-akka.actor.default-dispatcher-27] INFO  c.h.actors.GeneralMedicineActor - Sent log entry for query d0a35a49-852b-4373-a1dc-69648b733a70 to LoggerActor using 'tell' pattern
+2025-08-13 15:49:30.265 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - === QUERY LOG ===
+2025-08-13 15:49:30.265 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Query ID: d0a35a49-852b-4373-a1dc-69648b733a70
+2025-08-13 15:49:30.265 [HealthAssistantSystem-akka.actor.default-dispatcher-27] INFO  c.h.actors.GeneralMedicineActor - Completed processing query d0a35a49-852b-4373-a1dc-69648b733a70 - responded to user
+2025-08-13 15:49:30.265 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - User ID: test-user
+2025-08-13 15:49:30.265 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Department: general-medicine
+2025-08-13 15:49:30.265 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Query: I have a sore throat and fever
+2025-08-13 15:49:30.265 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Response: I'm currently experiencing difficulties. Please ensure Ollama is running and try again.
+2025-08-13 15:49:30.265 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Success: true
+2025-08-13 15:49:30.266 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Timestamp: 2025-08-13T15:49:30.264601
+2025-08-13 15:49:30.266 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - Node: akka://HealthAssistantSystem@127.0.0.1:2551
+2025-08-13 15:49:30.266 [HealthAssistantSystem-akka.actor.default-dispatcher-23] INFO  c.healthassistant.actors.LoggerActor - =================
