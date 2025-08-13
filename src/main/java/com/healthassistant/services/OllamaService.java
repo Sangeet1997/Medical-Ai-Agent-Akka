@@ -72,17 +72,15 @@ public class OllamaService {
     private CompletionStage<HttpRequest> createOllamaRequest(String prompt) {
         return CompletableFuture.supplyAsync(() -> {
             try {
-                // Create request body for Ollama generate API
-                String requestBody = objectMapper.writeValueAsString(
-                    objectMapper.createObjectNode()
-                        .put("model", model)
-                        .put("prompt", prompt)
-                        .put("stream", false)
-                        .put("options", objectMapper.createObjectNode()
-                            .put("temperature", 0.7)
-                            .put("top_p", 0.9)
-                            .put("max_tokens", 500))
+                // Create request body manually to avoid any JSON serialization issues
+                String requestBody = String.format(
+                    "{\"model\":\"%s\",\"prompt\":\"%s\",\"stream\":false,\"options\":{\"temperature\":0.7,\"top_p\":0.9,\"num_predict\":500}}",
+                    model, 
+                    prompt.replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "\\r")
                 );
+
+                logger.info("Sending request to Ollama: model={}, prompt length={}, request body: {}", 
+                    model, prompt.length(), requestBody);
 
                 return HttpRequest.POST(baseUrl + "/api/generate")
                         .withEntity(ContentTypes.APPLICATION_JSON, requestBody);
@@ -120,10 +118,15 @@ public class OllamaService {
                         }
                     });
         } else {
-            logger.error("Ollama request failed with status: {} {}", response.status().intValue(), response.status().reason());
-            return CompletableFuture.completedFuture(
-                "I'm currently experiencing difficulties. Please ensure Ollama is running and try again."
-            );
+            // Get the error response body for debugging
+            return response.entity()
+                    .toStrict(timeout.toMillis(), system)
+                    .thenApply(entity -> {
+                        String errorBody = entity.getData().utf8String();
+                        logger.error("Ollama request failed with status: {} {}. Error body: {}", 
+                            response.status().intValue(), response.status().reason(), errorBody);
+                        return "I'm currently experiencing difficulties. Please ensure Ollama is running and try again.";
+                    });
         }
     }
 
