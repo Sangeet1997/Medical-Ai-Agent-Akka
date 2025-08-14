@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Medical-Ai-Agent-Akka
-=======
 # Distributed Health Assistant System
 
 A complete distributed health assistant system using Java and Akka Cluster Typed Actors, integrated with locally running LLaMA 3.2 model via Ollama. This system demonstrates all three core Akka communication patterns (`tell`, `ask`, `forward`) in a real-world medical consultation scenario.
@@ -458,4 +455,3 @@ This is a **complete, production-ready implementation** that demonstrates:
 ## 📄 License
 
 This project is for educational and demonstration purposes, showcasing Akka Cluster Typed Actors with real-world LLM integration in a medical domain context.
->>>>>>> ba1ecdd (fixed dependencies)
