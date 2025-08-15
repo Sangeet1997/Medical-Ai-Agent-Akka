@@ -6,6 +6,7 @@ import akka.actor.typed.javadsl.*;
 import com.healthassistant.messages.LLMMessages.*;
 import com.healthassistant.messages.LoggerMessages.*;
 import com.healthassistant.messages.RouterMessages.*;
+import com.healthassistant.messages.ChatHistoryMessages.*;
 import com.healthassistant.utils.DepartmentClassifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,7 @@ public class PharmacyActor extends AbstractBehavior<Object> {
 
     private final ActorRef<Object> llmActor;
     private final ActorRef<Object> loggerActor;
+    private final ActorRef<Object> chatHistoryActor;
     private final String nodeName;
 
     public static Behavior<Object> create() {
@@ -33,6 +35,7 @@ public class PharmacyActor extends AbstractBehavior<Object> {
         // Create child actors
         this.llmActor = context.spawn(LLMActor.create(), "pharmacy-llm-actor");
         this.loggerActor = context.spawn(LoggerActor.create(), "pharmacy-logger-actor");
+        this.chatHistoryActor = context.spawn(ChatHistoryActor.create(), "pharmacy-chat-history-actor");
         this.nodeName = context.getSystem().address().toString();
         
         logger.info("PharmacyActor started on node: {}", nodeName);
@@ -106,6 +109,22 @@ public class PharmacyActor extends AbstractBehavior<Object> {
                 LocalDateTime.now(),
                 llmResponse.success
         );
+
+        // Create chat history entry
+        ChatHistoryEntry chatEntry = new ChatHistoryEntry(
+                originalQuery.queryId,
+                originalQuery.userId,
+                originalQuery.query,
+                responseText,
+                "pharmacy",
+                LocalDateTime.now(),
+                llmResponse.success,
+                "pharmacy-session-" + System.currentTimeMillis(),
+                null // responseTimeMs - can be calculated later
+        );
+
+        // Save to chat history (fire-and-forget)
+        chatHistoryActor.tell(new SaveChatHistoryFireAndForget(chatEntry));
 
         // FORWARD PATTERN: Send the response via LoggerActor while maintaining original sender
         // The LoggerActor will log and then forward the response to the original sender

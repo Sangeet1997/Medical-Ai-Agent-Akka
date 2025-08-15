@@ -1,6 +1,6 @@
 # Distributed Health Assistant System
 
-A complete distributed health assistant system using Java and Akka Cluster Typed Actors, integrated with locally running LLaMA 3.2 model via Ollama. This system demonstrates all three core Akka communication patterns (`tell`, `ask`, `forward`) in a real-world medical consultation scenario.
+A complete distributed health assistant system using Java and Akka Cluster Typed Actors, integrated with locally running LLaMA 3.2 model via Ollama and MongoDB for persistent chat history. This system demonstrates all three core Akka communication patterns (`tell`, `ask`, `forward`) in a real-world medical consultation scenario.
 
 ## � **COMPLETE PRODUCTION-READY IMPLEMENTATION**
 
@@ -14,18 +14,36 @@ The system simulates a distributed hospital environment where each cluster node 
 - **Pharmacy Node** (Port 2552, HTTP 8081) - Manages medication and pharmaceutical queries  
 - **Radiology Node** (Port 2553, HTTP 8082) - Processes imaging and radiology questions
 
-Each node hosts specialized typed actors that demonstrate different communication patterns while processing medical queries using LLaMA 3.2.
+Each node hosts specialized typed actors that demonstrate different communication patterns while processing medical queries using LLaMA 3.2. All interactions are persisted in MongoDB for chat history and analytics.
+
+## 🗄️ **NEW: MongoDB Integration**
+
+The system now includes comprehensive chat history functionality:
+
+- **Persistent Chat History** - All user interactions stored in MongoDB
+- **User Session Tracking** - Track conversations across sessions
+- **Department Analytics** - Usage statistics per medical department
+- **REST API Access** - RESTful endpoints for chat history retrieval
+- **Real-time Analytics** - Query success rates, response times, user activity
 
 ## 🚀 **ONE-COMMAND SETUP**
 
+### Windows PowerShell
+```powershell
+# Complete setup including MongoDB
+.\scripts-powershell\setup-complete.ps1
+```
+
+### Linux/macOS
 ```bash
 # Complete setup and build
 ./setup-complete.sh
 ```
 
 This single script will:
-- ✅ Check all prerequisites (Java, Maven, Ollama)
+- ✅ Check all prerequisites (Java, Maven, Ollama, MongoDB)
 - ✅ Setup and test Ollama with LLaMA 3.2
+- ✅ Install and configure MongoDB
 - ✅ Build the complete project
 - ✅ Provide instructions to start the distributed system
 
@@ -278,25 +296,53 @@ INFO RouterActor - Routing query abc-123 to pharmacy department using 'tell' pat
 INFO PharmacyActor - Processing query abc-123 using 'forward' pattern  
 INFO LLMActor - Processing query abc-123 using LLaMA model (ask pattern)
 INFO LoggerActor - FORWARD PATTERN: Logging and forwarding query abc-123
+INFO ChatHistoryActor - Saved chat history entry for user patient001
 ```
 
 ### Cluster Status
 ```bash
+# Linux/macOS
 ./scripts/monitor-cluster.sh
+
+# Windows PowerShell
+.\scripts-powershell\monitor-cluster.ps1
 
 # Shows:
 # ✅ HTTP servers status
 # ✅ Akka cluster nodes
 # ✅ Ollama connectivity
+# ✅ MongoDB connectivity
 # ✅ System health test
+```
+
+### MongoDB Analytics
+```bash
+# View chat history directly
+mongo health_assistant
+> db.chat_history.find().pretty()
+> db.chat_history.aggregate([
+    {$group: {_id: "$department", count: {$sum: 1}}},
+    {$sort: {count: -1}}
+  ])
 ```
 
 ## 🧪 Comprehensive Testing
 
-### Automated Test Suite
+### Complete System Testing
 ```bash
+# Linux/macOS
 ./scripts/test-system.sh
-# Tests all endpoints, communication patterns, and use cases
+
+# Windows PowerShell  
+.\scripts-powershell\test-system-complete.ps1
+# Tests all endpoints, communication patterns, chat history, and analytics
+```
+
+### Chat History Testing
+```bash
+# Windows PowerShell
+.\scripts-powershell\test-chat-history.ps1
+# Focused testing of MongoDB integration and API endpoints
 ```
 
 ### Interactive Testing
@@ -434,10 +480,70 @@ This project demonstrates:
 
 ### Advanced Features
 - Multiple LLM model support
-- Real-time notifications
+- Real-time notifications  
 - WebSocket connections
 - Machine learning for better query classification
 - Integration with external medical APIs
+- **✅ MongoDB chat history (IMPLEMENTED)**
+- **✅ REST API for data access (IMPLEMENTED)**
+- **✅ Analytics and reporting (IMPLEMENTED)**
+
+## 🔗 **API Endpoints**
+
+### Core Functionality
+```bash
+# Submit medical query
+POST /query
+{
+  "query": "I have a headache and nausea",
+  "userId": "patient001"
+}
+
+# Get system logs
+GET /logs
+```
+
+### Chat History (NEW)
+```bash
+# Get user chat history
+GET /api/chat-history/{userId}/history?limit=20&department=pharmacy
+
+# Get system analytics  
+GET /api/chat-history/analytics
+
+# Get user-specific analytics
+GET /api/chat-history/analytics?userId=patient001
+```
+
+### Response Examples
+```json
+// Chat History Response
+{
+  "success": true,
+  "entries": [
+    {
+      "userId": "patient001",
+      "queryId": "query-123",
+      "query": "What is the dosage for ibuprofen?",
+      "response": "For adults, the typical dosage...",
+      "department": "pharmacy", 
+      "timestamp": "2025-08-15T14:30:00",
+      "success": true,
+      "sessionId": "pharmacy-session-1692112200"
+    }
+  ]
+}
+
+// Analytics Response
+{
+  "success": true,
+  "totalQueries": 150,
+  "successfulQueries": 142,
+  "averageResponseTime": 2340.5,
+  "mostActiveUser": "patient001",
+  "mostPopularDepartment": "general-medicine"
+}
+```
 
 ## 🏆 **COMPLETE & READY TO RUN**
 
@@ -445,10 +551,35 @@ This is a **complete, production-ready implementation** that demonstrates:
 - ✅ All three Akka communication patterns in realistic scenarios
 - ✅ Real LLM integration with local LLaMA 3.2
 - ✅ Distributed cluster architecture
+- ✅ **MongoDB integration with persistent chat history**
+- ✅ **RESTful API for data access and analytics**
 - ✅ Comprehensive testing and monitoring
+- ✅ Cross-platform support (Windows PowerShell + Linux/macOS)
 - ✅ Production-quality code structure and documentation
 
-**Run `./setup-complete.sh` to get started immediately!**
+**Windows:** Run `.\scripts-powershell\setup-complete.ps1` to get started!  
+**Linux/macOS:** Run `./setup-complete.sh` to get started!
+
+### 🗄️ Database Schema
+```javascript
+// MongoDB Collection: health_assistant.chat_history
+{
+  "_id": ObjectId("..."),
+  "userId": "patient001",
+  "queryId": "query-abc-123", 
+  "query": "What is the dosage for ibuprofen?",
+  "response": "For adults, the typical dosage is...",
+  "department": "pharmacy",
+  "timestamp": ISODate("2025-08-15T14:30:00Z"),
+  "success": true,
+  "sessionId": "pharmacy-session-1692112200"
+}
+
+// Indexes for performance
+db.chat_history.createIndex({userId: 1, timestamp: -1})
+db.chat_history.createIndex({department: 1})
+db.chat_history.createIndex({timestamp: -1})
+```
 
 ---
 

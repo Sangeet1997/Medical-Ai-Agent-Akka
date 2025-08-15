@@ -64,6 +64,26 @@ function Test-Prerequisites {
     Write-Host ""
 }
 
+# Function to setup MongoDB
+function Initialize-MongoDB {
+    Write-Host "🗄️ Setting up MongoDB for chat history..." -ForegroundColor Yellow
+    
+    # Check if MongoDB setup script exists
+    $mongoSetupScript = ".\scripts-powershell\setup-mongodb.ps1"
+    
+    if (Test-Path $mongoSetupScript) {
+        Write-Host "Running MongoDB setup script..." -ForegroundColor Cyan
+        & $mongoSetupScript
+    }
+    else {
+        Write-Host "⚠️ MongoDB setup script not found. Please ensure MongoDB is installed and running." -ForegroundColor Yellow
+        Write-Host "   MongoDB is required for chat history persistence."
+        Write-Host "   You can install it manually from: https://www.mongodb.com/try/download/community"
+    }
+    
+    Write-Host ""
+}
+
 # Function to setup Ollama
 function Initialize-Ollama {
     Write-Host "🚀 Setting up Ollama and LLaMA 3.2..." -ForegroundColor Yellow
@@ -190,6 +210,7 @@ function Show-CompletionMessage {
 function Start-HealthAssistantSetup {
     try {
         Test-Prerequisites
+        Initialize-MongoDB
         Initialize-Ollama
         Build-Project
         Show-StartupInstructions

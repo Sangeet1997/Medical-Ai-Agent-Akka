@@ -11,9 +11,12 @@ import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.model.StatusCodes;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
+import akka.http.javadsl.server.PathMatchers;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.healthassistant.actors.ChatHistoryActor;
 import com.healthassistant.messages.RouterMessages.*;
+import com.healthassistant.messages.ChatHistoryMessages.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,10 +32,13 @@ public class HealthAssistantHttpServer extends AllDirectives {
 
     private final ActorSystem<?> system;
     private final ActorRef<UserQuery> routerActor;
+    private final ActorRef<Object> chatHistoryActor;
 
     public HealthAssistantHttpServer(ActorSystem<?> system, ActorRef<UserQuery> routerActor) {
         this.system = system;
         this.routerActor = routerActor;
+        // Create ChatHistoryActor for API endpoints
+        this.chatHistoryActor = system.systemActorOf(ChatHistoryActor.create(), "chat-history-api-actor", akka.actor.typed.Props.empty());
     }
 
     // Request/Response DTOs
@@ -89,14 +95,45 @@ public class HealthAssistantHttpServer extends AllDirectives {
                 // Static info endpoint
                 path("info", () ->
                         get(() -> {
-                            String jsonResponse = "{\"system\":\"Health Assistant\",\"version\":\"1.0.0\",\"departments\":[\"general-medicine\",\"pharmacy\",\"radiology\"]}";
+                            String jsonResponse = "{\"system\":\"Health Assistant\",\"version\":\"1.0.0\",\"departments\":[\"general-medicine\",\"pharmacy\",\"radiology\"],\"features\":[\"chat-history\",\"mongodb-persistence\"]}";
                             return complete(StatusCodes.OK, HttpEntities.create(ContentTypes.APPLICATION_JSON, jsonResponse));
                         })
                 ),
 
+                // Chat history endpoints
+                pathPrefix("api", () -> concat(
+                        pathPrefix("chat-history", () -> concat(
+                                // Get chat history for a user
+                                pathPrefix(PathMatchers.segment(), userId ->
+                                        path("history", () ->
+                                                get(() ->
+                                                        parameter("limit", limit ->
+                                                                parameter("department", department ->
+                                                                        onSuccess(getChatHistory(userId, Integer.parseInt(limit), department), response ->
+                                                                                complete(StatusCodes.OK, response, Jackson.marshaller())
+                                                                        )
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                ),
+                                
+                                // Get chat analytics
+                                path("analytics", () ->
+                                        get(() ->
+                                                parameter("userId", userId ->
+                                                        onSuccess(getChatAnalytics(userId), response ->
+                                                                complete(StatusCodes.OK, response, Jackson.marshaller())
+                                                        )
+                                                )
+                                        )
+                                )
+                        ))
+                )),
+
                 // Catch all
                 pathPrefix("", () ->
-                        complete(StatusCodes.NOT_FOUND, "Endpoint not found. Available endpoints: /health, /query, /info")
+                        complete(StatusCodes.NOT_FOUND, "Endpoint not found. Available endpoints: /health, /query, /info, /api/chat-history/{userId}/history, /api/chat-history/analytics")
                 )
         );
     }
@@ -131,6 +168,30 @@ public class HealthAssistantHttpServer extends AllDirectives {
                     false
             );
         });
+    }
+
+    /**
+     * Get chat history for a user
+     */
+    private CompletionStage<GetChatHistoryResponse> getChatHistory(String userId, int limit, String department) {
+        return AskPattern.ask(
+                chatHistoryActor,
+                replyTo -> new GetChatHistory(userId, null, limit, department, replyTo),
+                Duration.ofSeconds(10),
+                system.scheduler()
+        );
+    }
+
+    /**
+     * Get chat analytics
+     */
+    private CompletionStage<GetChatAnalyticsResponse> getChatAnalytics(String userId) {
+        return AskPattern.ask(
+                chatHistoryActor,
+                replyTo -> new GetChatAnalytics(userId, null, null, replyTo),
+                Duration.ofSeconds(10),
+                system.scheduler()
+        );
     }
 
     public void startServer(String interface_, int port) {
