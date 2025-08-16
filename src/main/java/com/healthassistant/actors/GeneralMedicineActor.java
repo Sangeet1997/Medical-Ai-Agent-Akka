@@ -6,6 +6,7 @@ import akka.actor.typed.javadsl.*;
 import com.healthassistant.messages.LLMMessages.*;
 import com.healthassistant.messages.LoggerMessages.*;
 import com.healthassistant.messages.RouterMessages.*;
+import com.healthassistant.messages.ChatHistoryMessages.*;
 import com.healthassistant.utils.DepartmentClassifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,7 @@ public class GeneralMedicineActor extends AbstractBehavior<Object> {
 
     private final ActorRef<Object> llmActor;
     private final ActorRef<Object> loggerActor;
+    private final ActorRef<Object> chatHistoryActor;
     private final String nodeName;
 
     public static Behavior<Object> create() {
@@ -33,6 +35,7 @@ public class GeneralMedicineActor extends AbstractBehavior<Object> {
         // Create child actors
         this.llmActor = context.spawn(LLMActor.create(), "llm-actor");
         this.loggerActor = context.spawn(LoggerActor.create(), "logger-actor");
+        this.chatHistoryActor = context.spawn(ChatHistoryActor.create(), "chat-history-actor");
         this.nodeName = context.getSystem().address().toString();
         
         logger.info("GeneralMedicineActor started on node: {}", nodeName);
@@ -113,10 +116,44 @@ public class GeneralMedicineActor extends AbstractBehavior<Object> {
         // Using 'tell' pattern for logging - fire and forget
         loggerActor.tell(logEntry);
         
+        // Create chat history entry and send to ChatHistoryActor
+        ChatHistoryEntry chatEntry = new ChatHistoryEntry(
+                originalQuery.queryId,
+                originalQuery.userId,
+                originalQuery.query,
+                "general-medicine",
+                responseText,
+                LocalDateTime.now(),
+                llmResponse.success,
+                generateSessionId(originalQuery.userId), // Generate or extract session ID
+                calculateResponseTime() // Calculate response time
+        );
+        
+        // Send to ChatHistoryActor for MongoDB persistence
+        chatHistoryActor.tell(new SaveChatHistoryFireAndForget(chatEntry));
+        
         logger.info("Sent log entry for query {} to LoggerActor using 'tell' pattern", 
+                originalQuery.queryId);
+        logger.info("Sent chat history entry for query {} to ChatHistoryActor for MongoDB storage", 
                 originalQuery.queryId);
         logger.info("Completed processing query {} - responded to user", originalQuery.queryId);
 
         return this;
+    }
+    
+    /**
+     * Generate session ID for user (simplified - in real implementation might use user session)
+     */
+    private String generateSessionId(String userId) {
+        // Simple session ID generation - could be enhanced with actual user session tracking
+        return userId + "-session-" + System.currentTimeMillis() / 10000; // 10-second windows
+    }
+    
+    /**
+     * Calculate response time (simplified)
+     */
+    private Long calculateResponseTime() {
+        // In a real implementation, you'd track start time and calculate actual response time
+        return System.currentTimeMillis() % 5000; // Simplified mock response time
     }
 }
